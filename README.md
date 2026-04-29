@@ -46,4 +46,4 @@ CREATE TABLE tarefas (
 
 -- Usuário padrão para testes:
 -- Login: admin | Senha: 123456
-INSERT INTO usuarios (usuario, senha) VALUES ('admin', 'e10adc3949ba59abbe56e057f20f883e');
+INSERT INTO usuarios (usuario, senha) VALUES ('admin', '123456');
