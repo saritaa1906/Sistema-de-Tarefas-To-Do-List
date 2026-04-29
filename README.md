@@ -27,23 +27,36 @@ O Sistema de Tarefas (To-Do List) utiliza PHP e MySQL para o gerenciamento de da
 2.  Crie um banco de dados MySQL chamado `tarefas`.
 3.  Importe a estrutura das tabelas abaixo:
 
-```sql
+```SQL -- Criar banco
+CREATE DATABASE tarefas;
+USE tarefas;
+
+-- =========================
+-- TABELA DE USUÁRIOS
+-- =========================
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    usuario VARCHAR(50) NOT NULL,
-    senha VARCHAR(32) NOT NULL
+    usuario VARCHAR(50) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL
 );
 
+-- =========================
+-- TABELA DE TAREFAS
+-- =========================
 CREATE TABLE tarefas (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    usuario_id INT,
     titulo VARCHAR(100) NOT NULL,
     descricao TEXT,
-    status ENUM('pendente', 'concluida') DEFAULT 'pendente',
+    status ENUM('pendente','concluida') DEFAULT 'pendente',
+    usuario_id INT NOT NULL,
+    data_tarefa DATE NOT NULL,
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
 
--- Usuário padrão para testes:
--- Login: admin | Senha: 123456
-INSERT INTO usuarios (usuario, senha) VALUES ('admin', '123456');
+-- =========================
+-- USUÁRIO DE TESTE
+-- =========================
+INSERT INTO usuarios (usuario, senha) 
+VALUES ('admin', MD5('123456'));
