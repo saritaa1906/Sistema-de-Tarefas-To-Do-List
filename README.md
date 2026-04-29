@@ -1,31 +1,31 @@
 # 📝 Sistema de Gerenciamento de Tarefas (To-Do List)
 
-Este projeto é uma aplicação web completa de lista de tarefas, desenvolvida como parte da **Questão A da Prova de Desenvolvimento de Sistemas**. O sistema permite que usuários autenticados gerenciem suas atividades diárias através de uma interface moderna e funcional.
+Este repositório contém uma aplicação web completa para gerenciamento de listas de tarefas, desenvolvida em PHP com integração de banco de dados MySQL. O sistema foi projetado para oferecer uma experiência de usuário intuitiva e segura, permitindo o controle individual de atividades.
 
-## 📋 Descrição do Projeto (300+ caracteres)
-Sistema de Tarefas (To-Do List) desenvolvido em PHP e MySQL. O projeto conta com autenticação de usuários via login e senha protegida por MD5, além de gerenciamento de sessões para segurança das rotas. Possui um CRUD completo que permite criar, listar, editar, concluir e excluir tarefas de forma dinâmica. A interface é moderna, responsiva e utiliza o framework Tailwind CSS com componentes como cards e badges de status coloridos. Implementado com PDO e Prepared Statements para garantir a segurança dos dados e evitar ataques de SQL Injection. Login de teste disponível: admin | Senha: 123456.
+## 📋 Descrição do Projeto
+O Sistema de Tarefas (To-Do List) utiliza PHP e MySQL para o gerenciamento de dados. A aplicação conta com autenticação de usuários via login e senha protegida por MD5, além de controle rigoroso de sessões para proteção de rotas internas. Possui um CRUD completo que permite criar, listar, editar, concluir e excluir tarefas de forma dinâmica. A interface é responsiva e utiliza o framework Tailwind CSS, apresentando componentes modernos como cards de tarefas e badges de status coloridos. Todo o backend foi implementado utilizando PDO e Prepared Statements para garantir a integridade dos dados e segurança contra SQL Injection.
 
 ## 🚀 Tecnologias e Frameworks
 * **Linguagem:** PHP 8.x
-* **Banco de Dados:** MySQL (PDO)
-* **Framework de Layout:** Tailwind CSS (via CDN)
-* **Segurança:** Criptografia MD5 para senhas e Prepared Statements.
+* **Banco de Dados:** MySQL (utilizando PDO)
+* **Frontend:** Tailwind CSS (via CDN)
+* **Segurança:** Criptografia de senhas em MD5 e consultas preparadas (Prepared Statements).
 
-## 📂 Estrutura de Arquivos Exigida
-1.  `conexao.php`: Gerencia a conexão PDO com o banco de dados.
-2.  `login.php`: Formulário de autenticação estilizado.
-3.  `logout.php`: Destruição de sessão e redirecionamento seguro.
-4.  `index.php`: Painel principal com listagem de tarefas e badges coloridos (Verde/Amarelo).
-5.  `nova.php`: Interface para adição de novas tarefas.
-6.  `editar.php`: Edição de registros com campos pré-preenchidos.
-7.  `concluir.php`: Processamento lógico para atualizar status para "concluída".
-8.  `excluir.php`: Remoção física de registros do banco de dados.
-9.  `layout.php`: Componentes globais de interface (Header/Navbar).
+## 📂 Estrutura de Arquivos
+1.  `conexao.php`: Configuração da conexão com o banco de dados.
+2.  `login.php`: Interface e lógica de autenticação de usuários.
+3.  `logout.php`: Encerramento de sessão e redirecionamento de segurança.
+4.  `index.php`: Dashboard principal com listagem de tarefas e controle de acesso.
+5.  `nova.php`: Formulário para cadastro de novas atividades.
+6.  `editar.php`: Interface para modificação de tarefas e alteração de status.
+7.  `concluir.php`: Script para atualização rápida do status da tarefa.
+8.  `excluir.php`: Lógica para remoção de registros do sistema.
+9.  `layout.php`: Arquivo centralizador de componentes visuais (Header e Navbar).
 
-## ⚙️ Instruções de Instalação
-1.  Clone este repositório para o diretório `htdocs` do seu XAMPP.
-2.  Crie o banco de dados chamado `tarefas`.
-3.  Execute o seguinte SQL para criar as tabelas:
+## ⚙️ Instruções de Configuração
+1.  Clone este repositório para o diretório `htdocs` do seu servidor local (XAMPP/WAMP).
+2.  Crie um banco de dados MySQL chamado `tarefas`.
+3.  Importe a estrutura das tabelas abaixo:
 
 ```sql
 CREATE TABLE usuarios (
@@ -44,5 +44,6 @@ CREATE TABLE tarefas (
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
 
--- Usuário padrão: admin / senha: 123456
+-- Usuário padrão para testes:
+-- Login: admin | Senha: 123456
 INSERT INTO usuarios (usuario, senha) VALUES ('admin', 'e10adc3949ba59abbe56e057f20f883e');
